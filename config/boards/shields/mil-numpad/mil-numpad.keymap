@@ -3,6 +3,20 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    /*
+     * Combo för att låsa upp ZMK Studio.
+     * Tryck "0" + "." samtidigt (inom 75 ms) -> Studio får ändra keymap.
+     * Position 15 = 0, position 16 = . (visuell ordning).
+     */
+    combos {
+        compatible = "zmk,combos";
+        combo_studio_unlock {
+            timeout-ms = <75>;
+            key-positions = <15 16>;
+            bindings = <&studio_unlock>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 

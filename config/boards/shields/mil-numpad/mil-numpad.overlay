@@ -1,9 +1,45 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <physical_layouts.dtsi>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
-        zmk,matrix_transform = &default_transform;
+        zmk,physical-layout = &physical_layout0;
+    };
+
+    /*
+     * Fysisk layout för ZMK Studio. Värdena är i centiunit (100 = 1u).
+     * Studio använder detta för att rita keyboardet visuellt i webbläsaren.
+     *
+     *   w  = bredd        h  = höjd
+     *   x  = horisontell  y  = vertikal position
+     *   r  = rotation (centidegrees, 0 = ingen rotation)
+     *   rx, ry = rotation center
+     */
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Mil Numpad";
+        kscan = <&kscan0>;
+        transform = <&default_transform>;
+        keys                              //  w   h    x    y   r  rx  ry
+            = <&key_physical_attrs 100 100   0   0   0   0   0>  // NumLock
+            , <&key_physical_attrs 100 100 100   0   0   0   0>  // /
+            , <&key_physical_attrs 100 100 200   0   0   0   0>  // *
+            , <&key_physical_attrs 100 100 300   0   0   0   0>  // -
+            , <&key_physical_attrs 100 100   0 100   0   0   0>  // 7
+            , <&key_physical_attrs 100 100 100 100   0   0   0>  // 8
+            , <&key_physical_attrs 100 100 200 100   0   0   0>  // 9
+            , <&key_physical_attrs 100 200 300 100   0   0   0>  // + (2u tall)
+            , <&key_physical_attrs 100 100   0 200   0   0   0>  // 4
+            , <&key_physical_attrs 100 100 100 200   0   0   0>  // 5
+            , <&key_physical_attrs 100 100 200 200   0   0   0>  // 6
+            , <&key_physical_attrs 100 100   0 300   0   0   0>  // 1
+            , <&key_physical_attrs 100 100 100 300   0   0   0>  // 2
+            , <&key_physical_attrs 100 100 200 300   0   0   0>  // 3
+            , <&key_physical_attrs 100 200 300 300   0   0   0>  // Enter (2u tall)
+            , <&key_physical_attrs 200 100   0 400   0   0   0>  // 0 (2u wide)
+            , <&key_physical_attrs 100 100 200 400   0   0   0>  // .
+            ;
     };
 
     /*
