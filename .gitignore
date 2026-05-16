@@ -3,6 +3,7 @@ build/
 .west/
 zephyr/
 modules/
+firmware/
 
 # macOS
 .DS_Store

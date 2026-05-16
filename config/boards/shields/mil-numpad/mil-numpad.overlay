@@ -45,15 +45,15 @@
 
         /*
          * RADER = de RÖDA diod-katod-trådarna (horisontella).
-         * R0 = röd #1 (NumLock, /, *, -)
-         * R1 = röd #2 (7, 8, 9)
-         * R2 = röd #3 (4, 5, 6, +)
-         * R3 = röd #4 (1, 2, 3)
-         * R4 = röd #5 (0, ., Enter)
+         * R0 = röd #1 (NumLock, /, *, -)   -> silk 100 (P1.00)  = pro_micro 6
+         * R1 = röd #2 (7, 8, 9)             -> silk 024 (P0.24)  = pro_micro 5
+         * R2 = röd #3 (4, 5, 6, +)          -> silk 017 (P0.17)  = pro_micro 2
+         * R3 = röd #4 (1, 2, 3)             -> silk 020 (P0.20)  = pro_micro 3
+         * R4 = röd #5 (0, ., Enter)         -> silk 022 (P0.22)  = pro_micro 4
          */
         row-gpios
-            = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>

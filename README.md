@@ -40,8 +40,8 @@ Silkscreen-labels matchar nRF52840 GPIO-pins.
 
 | Silk | pro_micro pos | Roll |
 |---|---|---|
-| `006` | 0  | R0 (röd diod-tråd: NumLock, /, *, -) |
-| `008` | 1  | R1 (7, 8, 9) |
+| `100` | 6  | R0 (röd diod-tråd: NumLock, /, *, -) |
+| `024` | 5  | R1 (7, 8, 9) |
 | `017` | 2  | R2 (4, 5, 6, +) |
 | `020` | 3  | R3 (1, 2, 3) |
 | `022` | 4  | R4 (0, ., Enter) |
@@ -50,7 +50,7 @@ Silkscreen-labels matchar nRF52840 GPIO-pins.
 | `113` | 15 | C2 (*, 9, 6, 3, .) |
 | `115` | 18 | C3 (-, +, Enter) |
 
-Rader sitter på vänster sida av Pro Micron, kolumner på höger sida.
+Alla pinnar sitter på vänster sida av Pro Micron förutom kolumnerna som ligger på höger.
 
 ## Bygga firmware
 
