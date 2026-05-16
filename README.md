@@ -34,19 +34,23 @@ Standard 17-tangents numpad: 4 visuella kolumner × 5 visuella rader.
 
 `+` och `Enter` har switchen i nedre halvan av sin 2u-keycap → hamnar på R2 respektive R4.
 
-## Pin-mappning (nice_nano_v2 / Tenstar Robot)
+## Pin-mappning (nice_nano//zmk / Tenstar Robot)
 
-| Pro Micro | Roll |
-|---|---|
-| D0 | R0 (röd diod-tråd: NumLock, /, *, -) |
-| D1 | R1 (7, 8, 9) |
-| D2 | R2 (4, 5, 6, +) |
-| D3 | R3 (1, 2, 3) |
-| D4 | R4 (0, ., Enter) |
-| D5 | C0 (svart kolumn-tråd: NumLock, 7, 4, 1, 0) |
-| D6 | C1 (/, 8, 5, 2) |
-| D7 | C2 (*, 9, 6, 3, .) |
-| D8 | C3 (-, +, Enter) |
+Silkscreen-labels matchar nRF52840 GPIO-pins.
+
+| Silk | pro_micro pos | Roll |
+|---|---|---|
+| `006` | 0  | R0 (röd diod-tråd: NumLock, /, *, -) |
+| `008` | 1  | R1 (7, 8, 9) |
+| `017` | 2  | R2 (4, 5, 6, +) |
+| `020` | 3  | R3 (1, 2, 3) |
+| `022` | 4  | R4 (0, ., Enter) |
+| `010` | 16 | C0 (svart kolumn-tråd: NumLock, 7, 4, 1, 0) |
+| `111` | 14 | C1 (/, 8, 5, 2) |
+| `113` | 15 | C2 (*, 9, 6, 3, .) |
+| `115` | 18 | C3 (-, +, Enter) |
+
+Rader sitter på vänster sida av Pro Micron, kolumner på höger sida.
 
 ## Bygga firmware
 

@@ -61,16 +61,16 @@
 
         /*
          * KOLUMNER = de SVARTA icke-diod-trådarna (vertikala).
-         * C0 = svart #1 (NumLock, 7, 4, 1, 0) <- den du löddat NU
-         * C1 = svart #2 (/, 8, 5, 2)
-         * C2 = svart #3 (*, 9, 6, 3, .)
-         * C3 = svart #4 (-, +, Enter)
+         * C0 = svart #1 (NumLock, 7, 4, 1, 0)   -> silk 010 (P0.10)  = pro_micro 16
+         * C1 = svart #2 (/, 8, 5, 2)            -> silk 111 (P1.11)  = pro_micro 14
+         * C2 = svart #3 (*, 9, 6, 3, .)         -> silk 113 (P1.13)  = pro_micro 15
+         * C3 = svart #4 (-, +, Enter)           -> silk 115 (P1.15)  = pro_micro 18
          */
         col-gpios
-            = <&pro_micro 5 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            = <&pro_micro 16 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 14 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 15 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 18 GPIO_ACTIVE_HIGH>
             ;
     };
 };
