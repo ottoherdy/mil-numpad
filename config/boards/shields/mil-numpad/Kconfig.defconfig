@@ -1,0 +1,6 @@
+if SHIELD_MIL_NUMPAD
+
+config ZMK_KEYBOARD_NAME
+    default "Mil Numpad"
+
+endif

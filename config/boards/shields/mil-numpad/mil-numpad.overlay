@@ -1,0 +1,76 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &default_transform;
+    };
+
+    /*
+     * MATRIS-IDÉ (matchar din ritning):
+     *   "Matrisrad" = de RÖDA horisontella diod-katod-trådarna.
+     *                 5 st  -> R0..R4.
+     *   "Matriskolumn" = de SVARTA vertikala icke-diod-trådarna.
+     *                    4 st -> C0..C3.
+     *
+     *           C0        C1        C2        C3
+     *   R0:  NumLock     /          *         -      <- röd #1 (toppen)
+     *   R1:  7           8          9         —      <- röd #2
+     *   R2:  4           5          6         +      <- röd #3 (böjer upp till +)
+     *   R3:  1           2          3         —      <- röd #4
+     *   R4:  0           —          .         Enter  <- röd #5 (böjer upp till Enter)
+     *
+     *   '—' = ingen switch (täcks av 2u-tangent eller mellanrum).
+     *   + sitter i NEDRE halvan av sin 2u-keycap (-> hamnar på R2).
+     *   Enter sitter i NEDRE halvan (-> hamnar på R4).
+     *   0 sitter i VÄNSTRA halvan av sin 2u-keycap (-> hamnar på C0).
+     */
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        rows = <5>;
+        columns = <4>;
+        map = <
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3)
+            RC(1,0) RC(1,1) RC(1,2) RC(2,3)
+            RC(2,0) RC(2,1) RC(2,2)
+            RC(3,0) RC(3,1) RC(3,2) RC(4,3)
+            RC(4,0)         RC(4,2)
+        >;
+    };
+
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        wakeup-source;
+
+        /*
+         * RADER = de RÖDA diod-katod-trådarna (horisontella).
+         * R0 = röd #1 (NumLock, /, *, -)
+         * R1 = röd #2 (7, 8, 9)
+         * R2 = röd #3 (4, 5, 6, +)
+         * R3 = röd #4 (1, 2, 3)
+         * R4 = röd #5 (0, ., Enter)
+         */
+        row-gpios
+            = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
+
+        /*
+         * KOLUMNER = de SVARTA icke-diod-trådarna (vertikala).
+         * C0 = svart #1 (NumLock, 7, 4, 1, 0) <- den du löddat NU
+         * C1 = svart #2 (/, 8, 5, 2)
+         * C2 = svart #3 (*, 9, 6, 3, .)
+         * C3 = svart #4 (-, +, Enter)
+         */
+        col-gpios
+            = <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 8 GPIO_ACTIVE_HIGH>
+            ;
+    };
+};
