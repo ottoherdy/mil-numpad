@@ -40,11 +40,16 @@
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row";
+        /*
+         * row2col: diodernas KATOD (svart streck) pekar mot KOLUMNEN.
+         * Strömmen flödar rad -> anod -> katod -> switch -> kolumn.
+         * Rader är OUTPUT, kolumner är INPUT med pull-down.
+         */
+        diode-direction = "row2col";
         wakeup-source;
 
         /*
-         * RADER = de RÖDA diod-katod-trådarna (horisontella).
+         * RADER = de RÖDA diod-anod-trådarna (horisontella). OUTPUT.
          * R0 = röd #1 (NumLock, /, *, -)   -> silk 100 (P1.00)  = pro_micro 6
          * R1 = röd #2 (7, 8, 9)             -> silk 024 (P0.24)  = pro_micro 5
          * R2 = röd #3 (4, 5, 6, +)          -> silk 017 (P0.17)  = pro_micro 2
@@ -52,25 +57,25 @@
          * R4 = röd #5 (0, ., Enter)         -> silk 022 (P0.22)  = pro_micro 4
          */
         row-gpios
-            = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&pro_micro 6 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 2 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 3 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
             ;
 
         /*
-         * KOLUMNER = de SVARTA icke-diod-trådarna (vertikala).
+         * KOLUMNER = de SVARTA icke-diod-trådarna (vertikala). INPUT (pull-down).
          * C0 = svart #1 (NumLock, 7, 4, 1, 0)   -> silk 010 (P0.10)  = pro_micro 16
          * C1 = svart #2 (/, 8, 5, 2)            -> silk 111 (P1.11)  = pro_micro 14
          * C2 = svart #3 (*, 9, 6, 3, .)         -> silk 113 (P1.13)  = pro_micro 15
          * C3 = svart #4 (-, +, Enter)           -> silk 115 (P1.15)  = pro_micro 18
          */
         col-gpios
-            = <&pro_micro 16 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 14 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 15 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 18 GPIO_ACTIVE_HIGH>
+            = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 };
