@@ -76,6 +76,13 @@ Tenstar Robot saknar fysisk reset-knapp. Bootloader triggas så här:
 > macOS poppar upp en tangentbordsinställningsguide vid första anslutning.
 > Stäng den — numpaden kan inte slutföra layout-identifieringen utan Shift.
 
+## Combos
+
+| Tryck samtidigt | Vad det gör |
+|---|---|
+| `0` + `.` | Lås upp ZMK Studio (krävs innan du kan ändra keymap från webbläsaren) |
+| `NumLock` + `0` + `Enter` | Tvinga in DFU-bootloader (när chassit är monterat och RST/GND ej går att nå) |
+
 ## Anpassa keymap
 
 ### Variant A: ZMK Studio (live i webbläsaren — rekommenderas)

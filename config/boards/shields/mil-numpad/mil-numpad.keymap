@@ -4,16 +4,28 @@
 
 / {
     /*
-     * Combo för att låsa upp ZMK Studio.
-     * Tryck "0" + "." samtidigt (inom 75 ms) -> Studio får ändra keymap.
-     * Position 15 = 0, position 16 = . (visuell ordning).
+     * Combos:
+     *
+     *   0 + .                  -> studio_unlock (öppna ZMK Studio)
+     *   NumLock + 0 + Enter    -> bootloader   (tvinga DFU-läge utan RST-pinnar)
+     *
+     * Position-ordningen är visuell, 0-indexerad:
+     *   0=NumLock 1=/ 2=* 3=-  4=7 5=8 6=9 7=+
+     *   8=4 9=5 10=6  11=1 12=2 13=3 14=Enter  15=0 16=.
      */
     combos {
         compatible = "zmk,combos";
+
         combo_studio_unlock {
             timeout-ms = <75>;
             key-positions = <15 16>;
             bindings = <&studio_unlock>;
+        };
+
+        combo_bootloader {
+            timeout-ms = <100>;
+            key-positions = <0 14 15>;
+            bindings = <&bootloader>;
         };
     };
 
@@ -33,7 +45,7 @@
                 &kp KP_N7       &kp KP_N8     &kp KP_N9        &kp KP_PLUS
                 &kp KP_N4       &kp KP_N5     &kp KP_N6
                 &kp KP_N1       &kp KP_N2     &kp KP_N3        &kp KP_ENTER
-                &kp KP_N0                     &kp KP_DOT
+                &kp KP_N0                     &kp DOT
             >;
         };
     };
