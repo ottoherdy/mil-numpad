@@ -33,6 +33,7 @@
         compatible = "zmk,keymap";
 
         default_layer {
+            display-name = "Numpad";
             // ----------------------------------------------------------
             // | NumLk |   /   |   *   |   -   |
             // |   7   |   8   |   9   |       |
@@ -46,6 +47,54 @@
                 &kp KP_N4       &kp KP_N5     &kp KP_N6
                 &kp KP_N1       &kp KP_N2     &kp KP_N3        &kp KP_ENTER
                 &kp KP_N0                     &kp DOT
+            >;
+        };
+
+        // Tomma layers redo att konfigureras i ZMK Studio.
+        // &trans = "transparent" -> faller igenom till lägre layer.
+        // Byt ut till valfri bindning via Studio.
+
+        layer_1 {
+            display-name = "Layer 1";
+            bindings = <
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans          &trans
+            >;
+        };
+
+        layer_2 {
+            display-name = "Layer 2";
+            bindings = <
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans          &trans
+            >;
+        };
+
+        layer_3 {
+            display-name = "Layer 3";
+            bindings = <
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans          &trans
+            >;
+        };
+
+        layer_4 {
+            display-name = "Layer 4";
+            bindings = <
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans  &trans  &trans
+                &trans  &trans  &trans  &trans
+                &trans          &trans
             >;
         };
     };
