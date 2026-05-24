@@ -94,16 +94,20 @@
 
         /*
          * KOLUMNER = de SVARTA icke-diod-trådarna (vertikala). INPUT (pull-down).
-         * C0 = svart #1 (NumLock, 7, 4, 1, 0)   -> silk 100 (P1.00)  = pro_micro 6
-         * C1 = svart #2 (/, 8, 5, 2)            -> silk 011 (P0.11)  = pro_micro 7
-         * C2 = svart #3 (*, 9, 6, 3, .)         -> silk 104 (P1.04)  = pro_micro 8
-         * C3 = svart #4 (Del, -, +, Enter)      -> silk 106 (P1.06)  = pro_micro 9
+         * OBS: kolumnerna är fysiskt wirade i SPEGELVÄND ordning mot vad
+         * användaren rapporterade — pinnarna här är i ordning som matchar
+         * den faktiska wiringen (verifierad via key-output testning).
+         *
+         * C0 = svart #1 (NumLock, 7, 4, 1, 0)   -> silk 106 (P1.06)  = pro_micro 9
+         * C1 = svart #2 (/, 8, 5, 2)            -> silk 104 (P1.04)  = pro_micro 8
+         * C2 = svart #3 (*, 9, 6, 3, .)         -> silk 011 (P0.11)  = pro_micro 7
+         * C3 = svart #4 (Del, -, +, Enter)      -> silk 100 (P1.00)  = pro_micro 6
          */
         col-gpios
-            = <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            = <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             , <&pro_micro 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&pro_micro 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&pro_micro 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
             ;
     };
 };
