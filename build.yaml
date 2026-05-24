@@ -2,3 +2,6 @@ include:
   - board: nice_nano//zmk
     shield: mil-numpad
     snippet: studio-rpc-usb-uart
+  - board: nice_nano//zmk
+    shield: pad-v2
+    snippet: studio-rpc-usb-uart

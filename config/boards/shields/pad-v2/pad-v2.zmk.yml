@@ -1,0 +1,9 @@
+file_format: "1"
+id: pad-v2
+name: Pad V2
+type: shield
+url: ""
+requires:
+  - pro_micro
+features:
+  - keys

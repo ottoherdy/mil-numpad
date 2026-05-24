@@ -1,0 +1,6 @@
+if SHIELD_PAD_V2
+
+config ZMK_KEYBOARD_NAME
+    default "Pad V2"
+
+endif
