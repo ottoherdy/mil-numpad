@@ -78,18 +78,19 @@
 
         /*
          * RADER = de RÖDA diod-anod-trådarna (horisontella). OUTPUT.
-         * R0 = röd #1 (NumLock, /, *, Del)   -> silk 006 (P0.06)  = pro_micro 0
+         * R0 = röd #1 (NumLock, /, *, Del)   -> silk 010 (P0.10)  = pro_micro 16
+         *      (flyttad från 006/008 — de är UART-pinnar och kan vara reserverade)
          * R1 = röd #2 (7, 8, 9, -)            -> silk 017 (P0.17)  = pro_micro 2
          * R2 = röd #3 (4, 5, 6, +)            -> silk 020 (P0.20)  = pro_micro 3
          * R3 = röd #4 (1, 2, 3)               -> silk 022 (P0.22)  = pro_micro 4
          * R4 = röd #5 (0, ., Enter)           -> silk 024 (P0.24)  = pro_micro 5
          */
         row-gpios
-            = <&pro_micro 0 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 2 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 3 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 4 GPIO_ACTIVE_HIGH>
-            , <&pro_micro 5 GPIO_ACTIVE_HIGH>
+            = <&pro_micro 16 GPIO_ACTIVE_HIGH>
+            , <&pro_micro 2  GPIO_ACTIVE_HIGH>
+            , <&pro_micro 3  GPIO_ACTIVE_HIGH>
+            , <&pro_micro 4  GPIO_ACTIVE_HIGH>
+            , <&pro_micro 5  GPIO_ACTIVE_HIGH>
             ;
 
         /*
