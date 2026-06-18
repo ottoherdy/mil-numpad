@@ -5,6 +5,23 @@
 
 / {
     /*
+     * Custom hold-tap för NumLock -> BLE-layer.
+     * "hold-preferred" gör att samtidigt tryck (NumLock + annan tangent)
+     * direkt räknas som "hold" -> layer 1 aktiv, ingen tapping-term-väntan.
+     * Snabbt nedtryck och släpp = vanligt Num Lock.
+     */
+    behaviors {
+        ble_lt: ble_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            bindings = <&mo>, <&kp>;
+        };
+    };
+
+    /*
      * Combos:
      *
      *   0 + .                  -> studio_unlock (öppna ZMK Studio)
@@ -41,7 +58,7 @@
              *   - håll inne       -> aktiverar BLE-layern så länge du håller
              */
             bindings = <
-                &lt 1 KP_NUMLOCK  &kp KP_SLASH  &kp KP_MULTIPLY  &kp DEL
+                &ble_lt 1 KP_NUMLOCK  &kp KP_SLASH  &kp KP_MULTIPLY  &kp DEL
                 &kp KP_N7         &kp KP_N8     &kp KP_N9        &kp KP_MINUS
                 &kp KP_N4         &kp KP_N5     &kp KP_N6        &kp KP_PLUS
                 &kp KP_N1         &kp KP_N2     &kp KP_N3        &kp KP_ENTER
