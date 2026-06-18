@@ -34,23 +34,43 @@
 
         default_layer {
             display-name = "Numpad";
+            /*
+             * NumLock är nu en HOLD-TAP:
+             *   - tryck snabbt    -> Num Lock (som vanligt)
+             *   - håll inne       -> aktiverar BLE-layern så länge du håller
+             */
             bindings = <
-                &kp KP_NUMLOCK  &kp KP_SLASH  &kp KP_MULTIPLY  &kp DEL
-                &kp KP_N7       &kp KP_N8     &kp KP_N9        &kp KP_MINUS
-                &kp KP_N4       &kp KP_N5     &kp KP_N6        &kp KP_PLUS
-                &kp KP_N1       &kp KP_N2     &kp KP_N3        &kp KP_ENTER
-                &kp KP_N0                     &kp DOT
+                &lt 1 KP_NUMLOCK  &kp KP_SLASH  &kp KP_MULTIPLY  &kp DEL
+                &kp KP_N7         &kp KP_N8     &kp KP_N9        &kp KP_MINUS
+                &kp KP_N4         &kp KP_N5     &kp KP_N6        &kp KP_PLUS
+                &kp KP_N1         &kp KP_N2     &kp KP_N3        &kp KP_ENTER
+                &kp KP_N0                       &kp DOT
             >;
         };
 
+        /*
+         * BLE-LAYER (håll NumLock för att komma hit):
+         *
+         *   NumLock(håll)  BT_NXT      BT_PRV      BT_CLR     <- nästa/förra profil, rensa nuvarande
+         *   BT_SEL 0       BT_SEL 1    BT_SEL 2    BT_SEL 3   <- välj profil 0-3
+         *   BT_SEL 4       OUT_USB     OUT_BLE     OUT_TOG    <- profil 4, output switch
+         *   -              -           -           -
+         *   -                          -
+         *
+         * Typiskt flöde:
+         *   1. Håll NumLock + tryck BT_SEL 0  -> ansluter till profil 0 (eller advertise om tom)
+         *   2. På datorn: para via Bluetooth-inställningar
+         *   3. Byt dator: håll NumLock + BT_SEL 1
+         *   4. Behöver para om: håll NumLock + BT_CLR (rensar nuvarande profil), sen para igen
+         */
         layer_1 {
-            display-name = "Layer 1";
+            display-name = "BLE";
             bindings = <
-                &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans
-                &trans          &trans
+                &trans          &bt BT_NXT    &bt BT_PRV    &bt BT_CLR
+                &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3
+                &bt BT_SEL 4    &out OUT_USB  &out OUT_BLE  &out OUT_TOG
+                &trans          &trans        &trans        &trans
+                &trans                        &trans
             >;
         };
 
